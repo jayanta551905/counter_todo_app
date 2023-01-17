@@ -1,6 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { deleteTodo } from './DeleteTodo';
 
 const TodoList = () => {
+
+    const todoItems = useSelector((state)=>state.todo.value);
+
     return (
         <div className='container-fluid'>
             <div className='row'>
@@ -15,12 +20,20 @@ const TodoList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Task Name</td>
-                                <td><button className='btn btn-success'>Edit</button></td>
-                                <td><button className='btn btn-danger'>Remove</button></td>
-                            </tr>
+
+                            {
+                                todoItems.map((item,i)=>{
+                                    return(
+                                        <tr key={i.toString()}>
+                                            <td>{i}</td>
+                                            <td>{item}</td>
+                                            <td><button className='btn btn-success'>Edit</button></td>
+                                            <td><button onClick={()=>{deleteTodo(i)}} className='btn btn-danger'>Remove</button></td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                            
                         </tbody>
                     </table>
                 </div>            

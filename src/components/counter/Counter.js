@@ -1,13 +1,11 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, setCustom } from '../../redux/state/counter/counterSlice';
 
 const counter = () => {
-    
     const count = useSelector((state)=>state.counter.value);
     const dispatch = useDispatch();
     const myNumber = useRef();
-
     return (
         <div className='card'>
             <div className='card-header bg-secondary'>
