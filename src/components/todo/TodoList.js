@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { deleteTodo } from './DeleteTodo';
+import { editTodoAlert } from './EditTodo';
 
 const TodoList = () => {
 
@@ -27,13 +28,12 @@ const TodoList = () => {
                                         <tr key={i.toString()}>
                                             <td>{i}</td>
                                             <td>{item}</td>
-                                            <td><button className='btn btn-success'>Edit</button></td>
+                                            <td><button onClick={()=>{editTodoAlert(i, item)}} className='btn btn-success'>Edit</button></td>
                                             <td><button onClick={()=>{deleteTodo(i)}} className='btn btn-danger'>Remove</button></td>
                                         </tr>
                                     )
                                 })
-                            }
-                            
+                            }                            
                         </tbody>
                     </table>
                 </div>            
